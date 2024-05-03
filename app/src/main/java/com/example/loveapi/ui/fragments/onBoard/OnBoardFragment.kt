@@ -27,19 +27,17 @@ class OnBoardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
-        showed()
         btnGetStarted()
         setupListener()
     }
 
     private fun initialize() {
         binding.viewPager2.adapter = OnBoardViewPagerAdapter(this)
-        PreferenceHelper.unit(requireContext())
+
     }
 
     private fun setupListener() = with(binding.viewPager2) {
         binding.btnViewPagerStart.setOnClickListener {
-            PreferenceHelper.onShowed()
             findNavController().navigate(R.id.loveCalculatorFragment)
         }
     }
@@ -57,7 +55,5 @@ class OnBoardFragment : Fragment() {
         })
     }
 
-    private fun showed() {
-        PreferenceHelper.isOnBoardShown = true
-    }
+
 }

@@ -2,26 +2,19 @@ package com.example.loveapi.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import javax.inject.Inject
 
-object PreferenceHelper {
-
-    private lateinit var sharedPreferences: SharedPreferences
-
-    fun unit(context: Context) {
-        sharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
-    }
+class PreferenceHelper @Inject constructor(private val sharedPreferences: SharedPreferences) {
 
     fun onShowed() {
-        sharedPreferences.edit().putBoolean(SHOWED, true).apply()
-    }
-    fun  isShowed():Boolean{
-        return sharedPreferences.getBoolean(SHOWED, false)
+        sharedPreferences.edit().putBoolean(SHOWED, false).apply()
     }
 
-    var isOnBoardShown: Boolean
-        get() = sharedPreferences.getBoolean("board", false)
-        set(value) = sharedPreferences.edit().putBoolean("board", value).apply()
+    fun isShowed(): Boolean {
+        return sharedPreferences.getBoolean(SHOWED, true)
+    }
 
-
-    const val SHOWED = "SHOWED"
+    companion object {
+        const val SHOWED = "SHOWED"
+    }
 }

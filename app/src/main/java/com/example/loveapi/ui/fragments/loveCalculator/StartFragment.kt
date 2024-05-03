@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.loveapi.R
 import com.example.loveapi.databinding.FragmentStartBinding
+import com.example.loveapi.utils.PreferenceHelper
 
 
 class StartFragment : Fragment() {
@@ -24,6 +25,7 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnStart.setOnClickListener {
             findNavController().navigate(R.id.viewPagerFragment)
         }
