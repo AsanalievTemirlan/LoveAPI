@@ -52,7 +52,7 @@ dependencies {
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.3.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     //Nav
     val nav_version = "2.7.7"

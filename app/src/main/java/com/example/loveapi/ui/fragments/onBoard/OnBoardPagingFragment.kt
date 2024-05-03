@@ -1,4 +1,4 @@
-package com.example.loveapi.ui.fragments.viewPager
+package com.example.loveapi.ui.fragments.onBoard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.loveapi.R
 import com.example.loveapi.databinding.FragmentViewPagerPadingBinding
 
-class ViewPagerPagingFragment : Fragment() {
+class OnBoardPagingFragment : Fragment() {
     private lateinit var binding: FragmentViewPagerPadingBinding
 
     override fun onCreateView(

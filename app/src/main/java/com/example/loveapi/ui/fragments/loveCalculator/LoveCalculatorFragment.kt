@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
@@ -43,14 +44,38 @@ class LoveCalculatorFragment : Fragment() {
             viewModel.getLovePercentage(
                 firstName = et1.text.toString(),
                 secondName = et2.text.toString()
-            ).observe(viewLifecycleOwner){
+            ).observe(viewLifecycleOwner) { loveModel ->
                 setFragmentResult(
                     "key", bundleOf(
-                        "data" to it
+                        "data" to loveModel
                     )
                 )
-                findNavController().navigate(R.id.resultFragment)
+
+                viewModel.flag.observe(viewLifecycleOwner) { flag ->
+                    Log.e("TAG", "initListener: $flag")
+                    if (flag == false) {
+                        viewModel.error.observe(viewLifecycleOwner) { errorMessage ->
+                            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    } else {
+                        findNavController().navigate(R.id.resultFragment)
+                    }
+                }
+
             }
+
+//            viewModel.getLovePercentage(
+//                firstName = et1.text.toString(),
+//                secondName = et2.text.toString()
+//            ).observe(viewLifecycleOwner) { loveModel ->
+//                setFragmentResult(
+//                    "key", bundleOf(
+//                        "data" to loveModel
+//                    )
+//                )
+//                findNavController().navigate(R.id.resultFragment)
+//            }
         }
     }
 }

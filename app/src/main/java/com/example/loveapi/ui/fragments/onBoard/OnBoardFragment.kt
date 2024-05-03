@@ -1,4 +1,4 @@
-package com.example.loveapi.ui.fragments.viewPager
+package com.example.loveapi.ui.fragments.onBoard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.loveapi.adapter.OnBoardViewPagerAdapter
 import com.example.loveapi.R
 import com.example.loveapi.databinding.FragmentViewPagerBinding
+import com.example.loveapi.utils.PreferenceHelper
 
-class ViewPagerFragment : Fragment() {
+class OnBoardFragment : Fragment() {
 
     private lateinit var binding: FragmentViewPagerBinding
 
@@ -26,17 +27,19 @@ class ViewPagerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
-        setupListener()
+        showed()
         btnGetStarted()
-
+        setupListener()
     }
 
     private fun initialize() {
         binding.viewPager2.adapter = OnBoardViewPagerAdapter(this)
+        PreferenceHelper.unit(requireContext())
     }
 
     private fun setupListener() = with(binding.viewPager2) {
         binding.btnViewPagerStart.setOnClickListener {
+            PreferenceHelper.onShowed()
             findNavController().navigate(R.id.loveCalculatorFragment)
         }
     }
@@ -54,5 +57,7 @@ class ViewPagerFragment : Fragment() {
         })
     }
 
-
+    private fun showed() {
+        PreferenceHelper.isOnBoardShown = true
+    }
 }
