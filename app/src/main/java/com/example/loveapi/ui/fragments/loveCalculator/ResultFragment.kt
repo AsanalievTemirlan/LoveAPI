@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.example.loveapi.R
-import com.example.loveapi.data.model.LoveModel
+import com.example.loveapi.data.network.model.LoveModel
 import com.example.loveapi.databinding.FragmentResultBinding
 
 
@@ -29,9 +29,12 @@ class ResultFragment : Fragment() {
         initListener()
     }
 
-    private fun initListener() {
-        binding.btnTryAgain.setOnClickListener {
+    private fun initListener() = with(binding) {
+        btnTryAgain.setOnClickListener {
             findNavController().navigate(R.id.loveCalculatorFragment)
+        }
+        btnHistory.setOnClickListener{
+            findNavController().navigate(R.id.historyFragment)
         }
     }
 

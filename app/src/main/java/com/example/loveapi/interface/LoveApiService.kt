@@ -1,6 +1,6 @@
 package com.example.loveapi.`interface`
 
-import com.example.loveapi.data.model.LoveModel
+import com.example.loveapi.data.network.model.LoveModel
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query

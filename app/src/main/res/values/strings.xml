@@ -18,4 +18,8 @@ vou to cherish love</string>
 don\'t worry
 Maybe someone is waiting for you!</string>
     <string name="calculate">Calculate</string>
+    <string name="love_history">Love History</string>
+    <string name="eq">=</string>
+    <string name="back">Back</string>
+    <string name="history">History</string>
 </resources>

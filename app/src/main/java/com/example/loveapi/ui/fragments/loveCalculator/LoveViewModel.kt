@@ -2,8 +2,11 @@ package com.example.loveapi.ui.fragments.loveCalculator
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.loveapi.data.model.LoveModel
+import com.example.loveapi.data.local.dao.LoveDao
+import com.example.loveapi.data.network.model.LoveModel
 import com.example.loveapi.data.repository.LoveRepository
+import com.example.loveapi.`interface`.LoveApiService
+import javax.inject.Inject
 
 class LoveViewModel : ViewModel() {
 

@@ -1,18 +1,22 @@
 package com.example.loveapi.data.repository
 
 import android.annotation.SuppressLint
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import com.example.loveapi.data.model.LoveModel
-import com.example.loveapi.`object`.RetrofitService
+import com.example.loveapi.data.local.dao.LoveDao
+import com.example.loveapi.data.network.model.LoveModel
+import com.example.loveapi.extension.toEntity
+import com.example.loveapi.`interface`.LoveApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class LoveRepository {
 
-    private val api = RetrofitService.api
+class LoveRepository @Inject constructor(
+    private val api: LoveApiService,
+    private val dao: LoveDao
+) {
+
     private var lovePercentageLv = MutableLiveData<LoveModel>()
     var error = MutableLiveData<String>()
     var flag = MutableLiveData<Boolean>()
@@ -25,13 +29,16 @@ class LoveRepository {
             @SuppressLint("SuspiciousIndentation")
             override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
                 if (response.isSuccessful && response.body() != null) {
+                    response.body()?.let {
+                        val historyEntity = it.toEntity()
+                        dao.addHistory(historyEntity)
+                    }
                     lovePercentageLv.postValue(response.body())
                     flag.postValue(true)
                 }
             }
 
             override fun onFailure(call: Call<LoveModel>, t: Throwable) {
-//                Log.e("fail", "onFailure: $t.error")
                 error.postValue(t.message)
                 flag.postValue(false)
             }
@@ -39,6 +46,4 @@ class LoveRepository {
         })
         return lovePercentageLv
     }
-
-
 }

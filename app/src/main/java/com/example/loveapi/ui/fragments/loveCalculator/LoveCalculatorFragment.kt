@@ -12,10 +12,7 @@ import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.loveapi.R
-import com.example.loveapi.data.model.LoveModel
-import com.example.loveapi.`object`.RetrofitService
 import com.example.loveapi.databinding.FragmentLoveCalculatorBinding
-import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
@@ -40,6 +37,9 @@ class LoveCalculatorFragment : Fragment() {
     }
 
     private fun initListener() = with(binding) {
+        btnHistory.setOnClickListener {
+            findNavController().navigate(R.id.historyFragment)
+        }
         btnCalculate.setOnClickListener {
             viewModel.getLovePercentage(
                 firstName = et1.text.toString(),
@@ -65,17 +65,6 @@ class LoveCalculatorFragment : Fragment() {
 
             }
 
-//            viewModel.getLovePercentage(
-//                firstName = et1.text.toString(),
-//                secondName = et2.text.toString()
-//            ).observe(viewLifecycleOwner) { loveModel ->
-//                setFragmentResult(
-//                    "key", bundleOf(
-//                        "data" to loveModel
-//                    )
-//                )
-//                findNavController().navigate(R.id.resultFragment)
-//            }
         }
     }
 }

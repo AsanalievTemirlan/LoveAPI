@@ -1,4 +1,4 @@
-package com.example.loveapi.data.model
+package com.example.loveapi.data.network.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
