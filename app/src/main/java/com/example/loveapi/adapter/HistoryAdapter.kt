@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.loveapi.data.local.entity.HistoryEntity
 import com.example.loveapi.databinding.ItemHistoryBinding
 
-class HistoryAdapter : ListAdapter<HistoryEntity, HistoryAdapter.ViewHolder>(DiffCallback()) {
+class HistoryAdapter(private val onItemLongClickListener: OnItemLongClickListener)
+    : ListAdapter<HistoryEntity, HistoryAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -29,6 +30,10 @@ class HistoryAdapter : ListAdapter<HistoryEntity, HistoryAdapter.ViewHolder>(Dif
                 tvSname.text = secondName
                 tvPercent.text = percentage
             }
+            root.setOnLongClickListener {
+                onItemLongClickListener.onItemLongClicked(historyEntity)
+                true
+            }
         }
     }
 
@@ -42,5 +47,8 @@ class HistoryAdapter : ListAdapter<HistoryEntity, HistoryAdapter.ViewHolder>(Dif
                     && oldItem.secondName == newItem.secondName
                     && oldItem.percentage == newItem.percentage
         }
+    }
+    interface OnItemLongClickListener {
+        fun onItemLongClicked(historyEntity: HistoryEntity)
     }
 }

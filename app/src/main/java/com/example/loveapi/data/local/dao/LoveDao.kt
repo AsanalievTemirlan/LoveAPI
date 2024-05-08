@@ -1,5 +1,6 @@
 package com.example.loveapi.data.local.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -12,8 +13,8 @@ interface LoveDao {
     @Insert
     fun addHistory (historyEntity: HistoryEntity)
 
-    @Query("SELECT * FROM histories")
-    fun getHistory(): List<HistoryEntity>
+    @Query("SELECT * FROM histories ORDER BY first_name")
+    fun getHistory(): LiveData<List<HistoryEntity>>
 
     @Delete
     fun deleteHistory(historyEntity: HistoryEntity)

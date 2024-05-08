@@ -1,11 +1,13 @@
 package com.example.loveapi.data.repository
 
 import android.annotation.SuppressLint
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.loveapi.data.local.dao.LoveDao
 import com.example.loveapi.data.network.model.LoveModel
 import com.example.loveapi.extension.toEntity
 import com.example.loveapi.api.LoveApiService
+import com.example.loveapi.data.local.entity.HistoryEntity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,5 +47,12 @@ class LoveRepository @Inject constructor(
 
         })
         return lovePercentageLv
+    }
+    fun deleteHistory(historyEntity: HistoryEntity) {
+        dao.deleteHistory(historyEntity)
+    }
+
+    fun getHistoryList(): LiveData<List<HistoryEntity>> {
+        return dao.getHistory()
     }
 }
