@@ -10,7 +10,9 @@ import com.example.loveapi.R
 import com.example.loveapi.adapter.HistoryAdapter
 import com.example.loveapi.databinding.FragmentHistoryBinding
 import com.example.loveapi.di.AppModule
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HistoryFragment : Fragment() {
 
     private lateinit var adapter: HistoryAdapter

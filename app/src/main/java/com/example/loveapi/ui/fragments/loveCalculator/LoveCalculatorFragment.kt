@@ -9,19 +9,20 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.loveapi.R
 import com.example.loveapi.databinding.FragmentLoveCalculatorBinding
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Callback
 import retrofit2.Response
 
+@AndroidEntryPoint
 class LoveCalculatorFragment : Fragment() {
 
     private lateinit var binding: FragmentLoveCalculatorBinding
-    private val viewModel by lazy {
-        ViewModelProvider(this)[LoveViewModel::class.java]
-    }
+    private val viewModel: LoveViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

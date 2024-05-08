@@ -1,9 +1,10 @@
-package com.example.loveapi.`interface`
+package com.example.loveapi.api
 
 import com.example.loveapi.data.network.model.LoveModel
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
+
 
 interface LoveApiService {
     @GET("getPercentage")

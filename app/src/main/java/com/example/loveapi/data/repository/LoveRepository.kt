@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.loveapi.data.local.dao.LoveDao
 import com.example.loveapi.data.network.model.LoveModel
 import com.example.loveapi.extension.toEntity
-import com.example.loveapi.`interface`.LoveApiService
+import com.example.loveapi.api.LoveApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

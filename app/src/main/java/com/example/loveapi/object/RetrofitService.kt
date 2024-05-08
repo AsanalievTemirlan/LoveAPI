@@ -1,6 +1,6 @@
 package com.example.loveapi.`object`
 
-import com.example.loveapi.`interface`.LoveApiService
+import com.example.loveapi.api.LoveApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

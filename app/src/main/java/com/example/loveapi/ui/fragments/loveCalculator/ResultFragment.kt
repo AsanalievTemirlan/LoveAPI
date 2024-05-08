@@ -10,8 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.loveapi.R
 import com.example.loveapi.data.network.model.LoveModel
 import com.example.loveapi.databinding.FragmentResultBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ResultFragment : Fragment() {
     private lateinit var binding: FragmentResultBinding
 
