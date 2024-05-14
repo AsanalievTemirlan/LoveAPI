@@ -27,21 +27,21 @@ class OnBoardPagingFragment : Fragment() {
     private fun initialize() = with(binding) {
         when (requireArguments().getInt(ARG_ONBOARD_POSITION)) {
             0 -> {
-                img.setImageResource(R.drawable.ic_view_pager1)
+                img.setAnimation(R.raw.lottie_1)
                 tv1.text = "Have a good time"
                 tv2.text = "You should take the time to help those\n" +
                         "who need you"
             }
 
             1 -> {
-                img.setImageResource(R.drawable.ic_view_pager2)
+                img.setAnimation(R.raw.lottie_2)
                 tv1.text = "Cherishing love"
                 tv2.text = "It is now no longer possible for\n" +
                         "vou to cherish love"
             }
 
             2 -> {
-                img.setImageResource(R.drawable.ic_view_pager3)
+                img.setAnimation(R.raw.lottie_3)
                 tv1.text = "Have a breakup?"
                 tv2.text = "We have made the correction for you\n" +
                         "don't worry\n" +
